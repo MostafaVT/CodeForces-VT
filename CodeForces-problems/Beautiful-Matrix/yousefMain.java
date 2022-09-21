@@ -10,38 +10,42 @@ public class yousefMain {
             }    
         }
         //base
-
         int one_cords_matrix[] = one_search(matrix);
-
+        int steps=0;
         while(one_cords_matrix[0] != 2 || one_cords_matrix[1] != 2 ){
             if(one_cords_matrix[0] < 2 ){
                 swapRow(matrix, one_cords_matrix[0],one_cords_matrix[1]);
                 one_cords_matrix[0]++; 
+                steps++;
             }else if (one_cords_matrix[0] > 2) {
                 swapRow(matrix, one_cords_matrix[0]-1,one_cords_matrix[1]);
                 one_cords_matrix[0]--;
+                steps++;
             }else if(one_cords_matrix[1] < 2){    
                 swapCol(matrix, one_cords_matrix[0],one_cords_matrix[1]);
-                one_cords_matrix[1]++;         
+                one_cords_matrix[1]++;
+                steps++;         
             }else if(one_cords_matrix[1] > 2){
                 swapCol(matrix, one_cords_matrix[0],one_cords_matrix[1]-1);
                 one_cords_matrix[1]--;
+                steps++;
             }
-        }
-        showArr(matrix);     
+        } 
+        System.out.print(steps);
+        System.out.print(Math.ceil(0.5));   
     }
     //debugging 2D-array 5x5
-    public static void showArr(int[][] arr){
-        System.out.println("Debug:");
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                System.out.print(arr[i][j]);
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
+    // public static void showArr(int[][] arr){
+    //     System.out.println("Debug:");
+    //     for (int i = 0; i < 5; i++) {
+    //         for (int j = 0; j < 5; j++) {
+    //             System.out.print(arr[i][j]);
+    //             System.out.print(" ");
+    //         }
+    //         System.out.println();
+    //     }
         
-    }
+    
     //swapping-Rows
     public static void swapRow(int[][]arr,int r1,int c1){   //r1 <---> r2
         int temp;

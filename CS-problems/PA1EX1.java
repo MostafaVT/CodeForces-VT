@@ -1,6 +1,5 @@
 import java.util.*;
-public class PA1EX1{
-    public class LinearArray{
+    class LinearArray{
         int itemCount;
         int array[];
         public LinearArray(int maxSize){
@@ -20,7 +19,7 @@ public class PA1EX1{
                     array[i]=array[i-1];
                 }
                 array[0]=x;
-                itemCount=x;    //wot??
+                itemCount++;                       
             }else{
                 System.out.println("Array is Full");
             }
@@ -33,27 +32,46 @@ public class PA1EX1{
             }
             return -1;
         }
-        public void delete(int x) {
-            int pos = this.linearSearch(x); //why this.?
+        public void delete(int x) {                    // fake deletion ?! , yeah
+                                                         // ___---> cuz it just not printing it LOL XD!!
+            int pos = this.linearSearch(x);         //why (this.) ?
             if(pos == -1) {
                 System.out.println("NOT FOUND!");
             }else {
                 for(int i=pos;i<itemCount-1;i++) {
-                    array[i]=array[i+1];
+                    array[i] = array[i+1];
                 }
                 itemCount--;
             }
         }
         public void displayArray() {
-            System.out.println("Array: ");
-            for(int i=0;i<itemCount;i++) {
-                System.out.println(array[i] + " ");
+            for(int i=0;i<itemCount;i++) {                  //array.length if we want to see the actual array
+                System.out.print(array[i] + " ");
             }
             System.out.println();
         }
-    }
+}
+public class PA1EX1{
     public static void main(String[] args){
-        
-    
+  
+        LinearArray a = new LinearArray(10);
+
+        a.insertLast(3);
+        a.insertLast(7);
+        a.insertFirst(8);
+
+        a.displayArray();
+
+        System.out.println("Count: " + a.itemCount);
+        System.out.println("Position of 8: " + a.linearSearch(8));
+        System.out.println("Position of 5: " + a.linearSearch(5));
+
+        a.delete(33);
+        a.delete(3);
+
+        a.displayArray();
+
+        System.out.println("Count: " + a.itemCount);
+
     }
 }
